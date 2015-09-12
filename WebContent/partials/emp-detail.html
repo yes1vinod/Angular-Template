@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div ng-controller='AssociateDetailCtrl'>
+	
+
+			<form ng-submit="doSubmit()" name="editDetails" class="form-horizontal">
+				<fieldset>
+
+					<div class="form-group">
+						<div ng-show="showError" class="alert alert-danger fade in col-lg-offset-2 col-md-5">
+							<a href="#" class="close" ng-click="closeAlert()" data-dismiss="alert">&times;</a> <strong>Error!</strong> A problem has been occurred while submitting your data.
+						</div>
+
+						<div ng-show="successMsg" data-dismiss="alert" class="alert alert-success fade in col-lg-offset-2 col-md-5">
+							<a href="#" class="close" ng-click="closeAlert()" data-dismiss="alert">&times;</a> <strong>Success!</strong> Your message has been saved successfully.
+						</div>
+
+
+					</div>
+
+
+					<div class="form-group">
+						<label for="inputEmail" class="col-lg-2 control-label">First Name</label>
+						<div class="col-md-5">
+							<input type="text" class="form-control" ng-model="assocaiateDetails.firstName" name="inputFirstName" placeholder="First Name" required>
+						</div>
+						<span class="error" ng-show="myForm.inputFirstName.$error.required"> Required!</span>
+					</div>
+					<div class="form-group">
+						<label for="inputLastName" class="col-lg-2 control-label">Last Name</label>
+						<div class="col-md-5">
+							<input type="text" class="form-control" ng-model="assocaiateDetails.lastName" id="inputLastName" placeholder="Last Name">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="contactEmail" class="col-lg-2 control-label">Email ID</label>
+						<div class="col-md-5">
+							<input type="email" required class="form-control" ng-model="assocaiateDetails.emailId" name="contactEmail" placeholder="Email ID">
+						</div>
+						<span class="error" ng-show="myForm.contactEmail.$error.required"> Required!</span> <span class="error" ng-show="myForm.contactEmail.$error.email"> Not valid email!</span>
+
+					</div>
+
+					<div class="form-group">
+						<label for="phoneNumber" class="col-lg-2 control-label">Phone Number</label>
+						<div class="col-md-5">
+							<input type="number" class="form-control" ng-minlength="10" ng-maxlength="10" id="inputPhone" name="phone" placeholder="Phone" ng-model="assocaiateDetails.phoneNumber"
+								ng-required="true"> <span class="help-block" ng-show="myForm.phone.$error.required || myForm.phone.$error.number">Valid phone number is required</span> <span
+								class="help-block" ng-show="((myForm.phone.$error.minlength || myForm.phone.$error.maxlength) && myForm.phone.$dirty) ">phone number should be 10 digits</span>
+						</div>
+
+
+					</div>
+
+
+					<div class="form-group">
+						<label for="location" class="col-lg-2 control-label">Location</label>
+						<div class="col-md-5">
+							<input type="text" class="form-control" ng-model="assocaiateDetails.location" id="location" placeholder="Enter Location">
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="textArea" class="col-lg-2 control-label">About you</label>
+						<div class="col-md-5">
+							<textarea class="form-control" rows="3" id="textArea"></textarea>
+							<span class="help-block">This section will help the readers to understand you more</span>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-md-5 col-lg-offset-2">
+							<button type="reset" class="btn btn-default">Reset</button>
+							<button ng-click="cancelClick()" type="button" class="btn btn-default">Cancel</button>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+
+		</div>
+</body>
+</html>
